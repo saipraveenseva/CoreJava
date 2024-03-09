@@ -1,0 +1,21 @@
+
+-------------System.out.println("Hello World");----------------
+
+1. System is a built-in class
+2. out is a built-in object
+3. out object has multiple methods.
+    print
+    println
+    printf
+    format are some of those.
+4. The above methods are overloaded methods. They can take different parameters as input
+    print(Object obj)
+    print(boolean b)
+    print(char c)
+    print(double d)
+    print(int i)
+
+5. System.out.println("Sum: "+x+y); // Here both the + are considered as concatenation.
+   System.out.println(x+y+"Sum");   // Here one is considered as addition and other is concat.
+   System.out.println("Sum of " +x+ " and " +y+ " is " +(x+y)); // Sum of 10 and 20 is 30
+
