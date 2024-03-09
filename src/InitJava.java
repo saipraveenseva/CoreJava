@@ -1,3 +1,3 @@
 public class InitJava {
-    // Init Java file
+    // Init Java file 1
 }
