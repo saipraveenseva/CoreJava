@@ -1,0 +1,105 @@
+Interpreter
+-----------
+1.Translate high level language to low level language(machine code) line by line.
+A line by line translation and execution takes place in interpreter.
+
+2.The translations are not stored anywhere.
+
+3.If you want to revisit, you have to Interpret again.
+
+4.Interpreter comes to an halt when it sees an error in the HLL. It doesn't continue further.
+Lets say there's an error in line 43. It translates up until line 42 and then throw an error and halt the translation.
+
+5.Javascript is an interpreter language. In javascript browser is the interpreter.
+Java is a hybrid language both compiled and interpreted.
+
+6.If you run the code 100 times, the translation and execution will happen 100 times.
+Thus making the interpreter slower the the compiler.
+
+7.Whenever we run a program, we also need an interpreter to translate.
+
+8.Interpreter languages are easy to develop programs because debugging is easy since the translation and execution stop at the point it encounters an error.
+
+
+Compiler
+--------
+1.Translate HLL to LLL all at once.
+Entire copy of code is translated first, it is created into a file if there are not errors and then  it is executed
+
+2.Translates it and stores it in a file.
+
+3.We can revisit the file to see the translation.
+
+4.Since the compiler scans the HLL text all at once, if it come across error at line 43, it does not create the translated file.
+
+5.C, C++ are compiler languages.
+
+6.If you run the code 100 times, the translation will be done once and the file is created and we can run it any times we want.
+Thus making it faster than interpreter.
+
+7.Whenever we run a program we dont need a compiler. Its only needed once.
+
+8.Compiler languages are difficult to develop programs because its hard to find where is the error and debug it. Code has 100 lines and the error is at 43rd line, it might throw 100 errors.
+We cannot pinpoint the errors.
+
+
+Understanding java in the contrast of compiler and interpreter.
+---------------------------------------------------------------
+1.Java is a hybrid language. Both compiled and interpreted.
+2.It generates a byte code instead of machine code. first.java to first.class. This is compilation.
+3.This byte code is interpreted by JVM. JVM is a platform dependent. It may be windows JVM or Linux.
+4.We can compile the java code in windows machine and take that byte code and run it in a linux machine.
+5.This is possible because Java is a hybrid language.
+
+First.cpp --> First.exe --> Operation system
+          com           exe
+
+First.java --> First.class --> JVM --> Operating system --> Hardware
+           com                     int&exe
+
+JVM has an interpreter and a JIT compiler to do this job.
+
+6. In case of compiled languages, First.exe uses System calls of the operating system to run the program
+7. Incase of Java the first.class does not interact with the operation system. JVM does that for you.
+that makes the Java platform independent and JVM platform dependent.
+8. The byte code be executed with any JVM(Windows, mac, Linux). JVM will make the respective system calls of their operating systems.
+9. Java is known for its WORA. Write Once Run Anywhere feature.
+
+
+Architecture of JVM
+-------------------
+public class HellWorld
+{
+    public static void main(String args[]){
+    int x=20,y=20,z;
+    z=x+y;
+    String str = new String("Sum is: ");
+    System.out.println(str+z);
+    }
+ }
+
+ 1. Memory section has Heap, Stack and Code sections.
+ 2. When we run the above code the code comes into code section. We call it class loading. This is done by class loader.
+ 3. Code section stores all the methods inside it. In the above code, main and print are the methods.
+ 4. Once the code is in code section, Interpreter/JIT compiler converts the code into machine code.
+ 5. The variables x,y,z and str is stored in Stack section. Local variables, normal variables and references are stored here.
+ 6. str is a dynamic object, so it is stored in the Heap section of the memory.
+ 7. When the print is called, its own variables are also stored in stack.
+
+ Features of JAVA(buzz words):
+ -----------------------------
+ 1. Simple
+ 2. Secure
+ 3. Portable(Platform independent)
+ 4. Object Oriented
+ 5. Robust(Exception handling)
+ 6. Multi-threaded
+ 7. Architecture-Neutral(Von-Neumann, ARM,RISC,CICS,Embedded)
+ 8. Interpreted
+ 9. High performance
+ 10. Distributed
+ 11. Dynamic
+
+
+
+
