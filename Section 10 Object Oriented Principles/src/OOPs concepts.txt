@@ -1,0 +1,12 @@
+1. Abstraction
+Hiding internal details and only showing required details.
+No need to know how it works but focus on what it does.
+
+2. Encapsulation
+Data binding, all the internals are binded.
+More like the data members and member functions are binded into a class.
+
+
+3. Inheritance
+4. Polymorphism
+
