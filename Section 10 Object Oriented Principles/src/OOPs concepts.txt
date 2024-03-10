@@ -6,7 +6,62 @@ No need to know how it works but focus on what it does.
 Data binding, all the internals are binded.
 More like the data members and member functions are binded into a class.
 
-
 3. Inheritance
+Take the existing model, add new features and make a new product.
+Code reusability in programming perspective.
+Specialisation is more like inheritance.
+Take the existing product and produce an specialised version of it.
+Specialisation is inheritance.
+
 4. Polymorphism
+Generalisation is grouping similar kind of things and referring them with a group name.(Generalising)
+Generalisation is polymorphism.
+
+
+class vs object
+---------------
+Anything in the world can be defined as an object.
+An object can be defined with 2 terms.
+1. properties(nouns, adjectives)
+2. behavior(verbs)
+
+class is basically a design of yet to develop object.
+Car is a design, Tiago is the object or end product.
+One class can make many objects.
+
+class Television{
+private int channel; // variables or data members are properties
+private int volume;
+
+public void changeChannel(){ // methods are the functions/behaviors
+----
+----
+}
+
+public void changeVolume(){
+----
+----
+}
+}   // This concludes as a design or a class
+
+class Test{
+public static void main(){
+Television t = new Television(); // t is an object created for the class Television.
+t.changeVolume(10); // Using the function of changeVolume with an object.
+}
+}
+
+1. All the methods are stored in the method area of the memory
+2. Class definitions are stored in the heap.
+3. The object references are stored in the stack.
+4. The objects since they are created dynamically with the new keyword they are stored in the heap
+
+
+
+
+
+
+
+
+
 
