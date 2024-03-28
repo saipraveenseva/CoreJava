@@ -1,0 +1,25 @@
+Generalisation
+--------------
+iPhone, Samsung and Vivo are devices, we can generalise them into a category called smartphones
+Bottom up approach
+
+In Java if we have some classes lets say iPhone, Samsung and Vivo, we can group them and write one super class from them
+and refer all the subclasses using the name of super calls. This is called Generalisation
+This is achieved using Interfaces.l
+
+Specialisation
+--------------
+Circle is an entity we add some property called height to it, and it becomes a cylinder.
+Innova is a car they added extra features and made a fortuner.
+Top-down approach
+
+In Java lets say we have a super class called Circle, we inherit the properties of Circle and
+add a new property height and write a cylinder class.
+This is achieved using Inheritance.
+
+
+Inheritance is acquiring the properties from an existing class to a new class.
+Circle --> Cylinder
+Rectangle -->Cuboid
+
+

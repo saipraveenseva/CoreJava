@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Core Java.iml" filepath="$PROJECT_DIR$/Core Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Section 11 Object Oriented Principles/Section 11 Object Oriented Principles.iml" filepath="$PROJECT_DIR$/Section 11 Object Oriented Principles/Section 11 Object Oriented Principles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Section 12 Inheritance/Section 12 Inheritance.iml" filepath="$PROJECT_DIR$/Section 12 Inheritance/Section 12 Inheritance.iml" />
       <module fileurl="file://$PROJECT_DIR$/Section 4 Featues and Architecture/Section 4 Featues and Architecture.iml" filepath="$PROJECT_DIR$/Section 4 Featues and Architecture/Section 4 Featues and Architecture.iml" />
       <module fileurl="file://$PROJECT_DIR$/Section 6 String class and printing/Section 6 String class and printing.iml" filepath="$PROJECT_DIR$/Section 6 String class and printing/Section 6 String class and printing.iml" />
     </modules>
