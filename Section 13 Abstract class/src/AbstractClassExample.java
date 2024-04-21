@@ -22,10 +22,19 @@ class MyHospital extends Hospital{
     void appointment(){
         System.out.println("Take appointment");
     }
+
+    void discharge(){
+        System.out.println("Patient discharged");
+    }
 }
 
 public class AbstractClassExample {
 
-    Hospital h = new MyHospital();
+    public static void main(String[] args) {
+        Hospital h = new MyHospital();
+        h.appointment();
+        h.emergency();
+        //h.discharge(); This throws an error becoz H is of type Hospital and can only access the methods of Hospital that are overridden in subclass.
 
+    }
 }

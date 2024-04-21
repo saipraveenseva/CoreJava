@@ -38,6 +38,17 @@ Dos and Don't of abstract classes
 -We can create a reference for abstract class but cannot create objects.
 Test t; legal // creating reference
 t=new Test(); not legal // creating object
+
+
+A subclass in Java can be abstract if it doesn't provide complete implementation for all inherited abstract methods from its superclass.
+This allows the subclass itself to be partially abstract, meaning it may have its own abstract methods or inherit them from its superclass.
+
+
+If the superclass is not abstract, then all methods in the superclass are implemented.
+In this case, a subclass can still be abstract if it adds new abstract methods, but it's not required to be abstract.
+However, if you want to prevent instantiation of the subclass itself and ensure that it is only used as a base for further subclasses, you can still declare it as abstract.
+
+
  */
 
 abstract class Super{
