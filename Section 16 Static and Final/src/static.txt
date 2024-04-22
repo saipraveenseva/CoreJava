@@ -1,0 +1,7 @@
+
+static keyword is used to represent meta data.
+
+-if we have data related to a class we use static variables
+-if the data needs some processing and computations, we use static methods
+-if we have a bunch of data(lot of methods/members) and can be grouped together, we can write a static nested class
+-
