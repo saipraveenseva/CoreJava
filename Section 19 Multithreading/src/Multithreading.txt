@@ -1,0 +1,24 @@
+Multiprogramming is running more than one program in a single machine.
+
+Multiprogramming can be divide into 2 ways.
+Mutli-user programming multiple users be using same resource simultaneously.
+Multitasking is where a single user runs more than one simultaneous programs at the same time.
+Multitasking can be further deduced into Multi threading
+
+States of a thread
+------------------
+new state(use start method)
+ready state(run method will execute)
+running state --> wait state
+running state --> timed wait state(exits when times up)
+running state --> blocked state
+running state --> terminate state
+
+Thread priorities
+-----------------
+In multi threading a scheduler places all the threads to be executed in a Ready queue.
+So these threads are given chance as per the algorithm used. Lets say we are using Round robin.
+Each thread is given a certain amount of time of CPU and it is placed back at the end of ready queue and the one in the front is given a chance.
+
+Apart from this we can assign some priorities to each thread so that they can execute as per the priorities.
+JVM has its own scheduler
