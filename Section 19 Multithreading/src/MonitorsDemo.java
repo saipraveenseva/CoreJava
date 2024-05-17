@@ -23,8 +23,8 @@ class Mydata{
 class Thread1 extends Thread{
     Mydata d1; // creating a reference
 
-    Thread1(Mydata dat){
-        d1=dat;
+    Thread1(Mydata d1){
+        this.d1=d1;
     }
     public void run(){
         d1.display("Hello World");
@@ -34,8 +34,8 @@ class Thread1 extends Thread{
 class Thread2 extends Thread{
     Mydata d2; // creating a reference
 
-    Thread2(Mydata dat){
-        d2=dat;
+    Thread2(Mydata d2){
+        this.d2=d2;
     }
     public void run(){
         d2.display("Welcome");
@@ -46,7 +46,7 @@ public class MonitorsDemo {
 
     public static void main(String[] args) {
         Mydata d = new Mydata(); // assigning an object
-        Thread1 t1 = new Thread1(d);
+        Thread1 t1 = new  Thread1(d);
         Thread2 t2 = new Thread2(d);
 
         t1.start();

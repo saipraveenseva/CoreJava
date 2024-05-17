@@ -1,0 +1,40 @@
+Inter process communication
+---------------------------
+Consider the producer consumer problem
+A producer writes a shared object and the consumer consumes it
+A producer should not produce until the consumer consumes it.
+Consumer should not read it until the producer produces a new item. It will copy the old shared object.
+
+So there should be some inter process/thread communication in place between the threads.
+The compiler or operating system cannot do this because the sequence of producer and consumer programs running is solely dependent on business logic.
+One easy way to depict this is use a flag.
+1. Producer writes the shared object and change the flag=true
+2. Consumer consumes the shared object and flip the flag=false
+
+In that way consumer does not consume if the flag=false
+and produce does not produce if the flag=true
+
+
+Multiple consumers
+------------------
+Lets say there is one producer and 3 consumers
+Just like the flag we use a count variable.
+The producer produces when the count value is only 1
+The consumer1 consumes it and updates the value count=2
+consumer2 count=3;
+consumer3 count=0; it will become 0 as all the consumers have consumed..
+Now as count=0, producer produces again.
+
+But there is a problem with this solution.
+
+Race condition
+---------------
+In practical we cannot predict which consumer thread will go for the shared object.
+As soon as producer produces any consumer can try to access the shared object.
+To further elaborate
+Producer produces a share object and go and wait at the end of the waiting queue.
+Whoever's next on the line will access the shared object. lets say consumer1.
+Once consumer1 is done, its consumer1's job to inform other threads in the waiting queue that it is done with the accessing and others can access now.
+We cannot predict which thread is going to access it next, it could even be the producer thread that can access the shared object next.
+In this scenario order does matter, first all consumers should access it and then producer should produce again.
+This is called race condition where all the threads race to get the shared object.
