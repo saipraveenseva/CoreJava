@@ -4,7 +4,7 @@ The actual mechanism of multithreading is present in this Thread class.
  */
 
 class MyThread extends Thread{
-     public void run(){ // This overrridenrun method is a java method from Thread class. Used while multi threading
+     public void run(){ // This overrriden run method is a java method from Thread class. Used while multi threading
         int i=1;
         while(true){        // This infinite loop is written for a reason.
             System.out.println(i+"hello");
