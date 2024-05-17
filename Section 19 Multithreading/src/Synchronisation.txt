@@ -1,0 +1,196 @@
+Synchronisation
+---------------
+Coordination between two or more entities(processes/threads).
+
+Resource sharing
+----------------
+More than one thread might access a resource at the same time. Its called a shared resource.
+An object in the heap can be used by multiple threads simultaneously.
+
+Critical section
+----------------
+A block of code where a shared resource is accessed by multiple threads is called a CS.
+This should be handled carefully. It might lead to data inconsistency.
+CS is the place where we have to avoid multiple threads accessing the resource at the same time. It should be one after the other.
+
+Mutual Exclusion
+----------------
+ME is a problem that occurs when 2 or more threads access a resource at the same time.
+ME enforces the threads to access the critical resources one at a time and not simultaneously.
+Accessing of resources of one thread should prevent the other thread accessing the same resource at the same time.
+
+Locking/Mutex
+-------------
+This is a method to achieve Mutual exclusion. Mutex is a variable kind of a lock.
+Lets say there are 2 processes in the waiting queue waiting for CPU.
+When thread1 gets the CPU and wants to access a critical resource. So it updates the mutex variable from 0 to 1.
+Now lets say thread1 is waiting for some IO and has been put back in the waiting queue.
+Now thread2 takes the CPU and wants to use the same critical resource. It looks at the mutex variable being 1 and cannot access the variable until thread1 finish using it
+Now lets say thread2 is put back in the queue in a round robin fashion and thread1 is now ahead of the queue. T
+Thread 1 completes its execution and change the mutex to 0 and exits the waiting queue.
+Now thread2 takes the CPU and see the mutex=0 and uses the critical resource.
+This is how mutual exclusion is achieved using Mutex variable.
+
+Mutex has a disadvantage. This can cause Deadlock/Starvation when one of the threads takes the lock gets suspended due to some IO or other stuff.
+thread2 has to wait indefinitely. Sometimes a critical section contain 2 shared resources.
+Thread 1 acquired R1 and waits for R2
+Thread 2 acquires R2 and waits for R1 causing a deadlock.
+
+
+Semaphore
+---------
+Semaphore is another method to achieve Mutual exclusion. It covers the mutex disadvantages
+Semaphore uses wait() and signal() methods. Operating system handles the semaphores.
+Every thread that comes to waiting queue runs the wait() methods
+Once a thread completes its execution it runs the signal() method so that the next thread can take the CPU
+
+Monitors
+--------
+Monitors in java deal with shared objects
+In Java, monitors are synchronization constructs that are used to control access to an object by multiple threads. Monitors are implemented using the `synchronized` keyword, which can be applied to methods or blocks of code. When a method or block of code is marked as `synchronized`, it means that only one thread can execute it at a time for a given object.
+
+### Key Concepts
+
+1. **Intrinsic Locks and Monitors**: Every object in Java has an intrinsic lock (or monitor). A thread that needs exclusive access to an object's fields or methods must first acquire the lock associated with that object. Once a thread acquires the lock, no other thread can acquire the lock on the same object until the first thread releases it.
+
+2. **Synchronized Methods**: You can mark a method with the `synchronized` keyword to make sure that only one thread can execute that method at a time for a given instance of the class.
+
+   ```java
+   public synchronized void synchronizedMethod() {
+       // critical section
+   }
+   ```
+
+3. **Synchronized Blocks**: For more fine-grained control, you can use synchronized blocks. This allows you to synchronize on any object, not just the current instance (`this`).
+
+   ```java
+   public void someMethod() {
+       synchronized (this) {
+           // critical section
+       }
+   }
+   ```
+
+4. **Static Synchronization**: To synchronize a static method, you use the class's intrinsic lock. This ensures that only one thread can execute any static synchronized method of the class at a time.
+
+   ```java
+   public static synchronized void staticSynchronizedMethod() {
+       // critical section
+   }
+   ```
+
+   or
+
+   ```java
+   public static void staticSynchronizedMethod() {
+       synchronized (SomeClass.class) {
+           // critical section
+       }
+   }
+   ```
+
+5. **Reentrancy**: Java's intrinsic locks are reentrant, meaning that if a thread that already holds the lock tries to acquire it again, it will succeed. This prevents a thread from deadlocking itself.
+
+6. **Wait, Notify, and NotifyAll**: Monitors in Java also support a wait/notify mechanism, which allows threads to communicate about the availability of resources.
+
+   - `wait()`: A thread that calls `wait()` on an object releases the lock and enters the waiting state until another thread calls `notify()` or `notifyAll()` on the same object.
+   - `notify()`: Wakes up one waiting thread.
+   - `notifyAll()`: Wakes up all waiting threads.
+
+   These methods must be called within a synchronized block or method.
+
+   ```java
+   synchronized (lockObject) {
+       while (condition) {
+           lockObject.wait();
+       }
+       // Perform action
+   }
+
+   synchronized (lockObject) {
+       // Update condition
+       lockObject.notify();
+   }
+   ```
+
+### Example
+
+Here's an example that demonstrates the use of monitors in Java using `synchronized` methods and blocks along with `wait()` and `notify()`:
+
+```java
+class SharedResource {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+        notify(); // Notify a waiting thread (if any) that the condition has changed
+    }
+
+    public synchronized void decrement() {
+        while (count == 0) {
+            try {
+                wait(); // Wait until the condition changes
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); // Restore the interrupted status
+            }
+        }
+        count--;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+class IncrementThread extends Thread {
+    private SharedResource resource;
+
+    public IncrementThread(SharedResource resource) {
+        this.resource = resource;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            resource.increment();
+            System.out.println("Incremented: " + resource.getCount());
+        }
+    }
+}
+
+class DecrementThread extends Thread {
+    private SharedResource resource;
+
+    public DecrementThread(SharedResource resource) {
+        this.resource = resource;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            resource.decrement();
+            System.out.println("Decremented: " + resource.getCount());
+        }
+    }
+}
+
+public class MonitorExample {
+    public static void main(String[] args) {
+        SharedResource resource = new SharedResource();
+
+        IncrementThread incrementThread = new IncrementThread(resource);
+        DecrementThread decrementThread = new DecrementThread(resource);
+
+        incrementThread.start();
+        decrementThread.start();
+    }
+}
+```
+
+### Explanation
+
+- **SharedResource**: This class contains methods for incrementing and decrementing a count. These methods are synchronized to ensure that only one thread can modify the count at a time.
+- **IncrementThread and DecrementThread**: These classes extend `Thread` and perform the increment and decrement operations, respectively.
+- **MonitorExample**: The main class creates instances of `IncrementThread` and `DecrementThread`, passing the shared resource to them, and starts both threads.
+
+In this example, `decrement()` uses `wait()` to wait until `count` is greater than 0, ensuring that the decrement operation can proceed safely. The `increment()` method calls `notify()` to wake up a waiting thread when the count is incremented. This demonstrates a simple producer-consumer scenario using monitors in Java.
