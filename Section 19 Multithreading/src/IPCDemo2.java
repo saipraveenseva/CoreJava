@@ -2,7 +2,7 @@ class Data1{
     int value;
     boolean flag=true;
     synchronized public void set(int x) {
-        while(flag!=true){      // Just by using this simple flag we can acheive ME
+        while(flag!=true){      // Just by using this simple flag we can achieve ME
             try{ wait(); } catch(Exception e){} // When the flag=true. Producer keeps waiting until it becomes false which means all the shared objects are consumed and its time for producing more.
         }
         value=x;
@@ -36,7 +36,7 @@ class Producer1 extends Thread{
             d.set(count);
             try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); } // delays the thread so the other thread could try to enter
 
-            System.out.println("producer: "+count); // Without the synchronized keyword This producer repeatedly sets the values 1 2 3 4 5 irrespective of consumer consuming
+            System.out.println("producer: "+count);
             count++;
         }
     }

@@ -58,4 +58,4 @@ public class IPCDemo1 {
         c.start();  // Even after using synchronized, the outputs could be Producer 1 consumer 1, producer 2 producer 3, consumer 2, producer 4 etc..
 
     }
-    }
+}

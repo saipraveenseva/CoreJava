@@ -37,7 +37,7 @@ public class MonitorsDemo2 {
 
     public static void main(String[] args) {
         Mydata2 d = new Mydata2(); // assigning an object
-        Threads t1 = new  Threads(d,"Hello World");
+        Threads t1 = new  Threads(d,"Hello World ");
         Threads t2 = new Threads(d,"Welcome sir");
 
         t1.start();

@@ -7,7 +7,7 @@ Output will be a mixture of both the Strings
 
 Now we introduce the Monitors concept and solve this problem.
 They both are trying to access a method called display() at the same time.
-display() function prints the string letter by letter given by the threads
+display() function prints the string letter by letter given by the threads.
  */
 
 class Mydata{
