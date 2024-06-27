@@ -15,7 +15,7 @@ public class WrapperClassDemo {
 
             THe hierarchy looks like this.
 
-            Object is inherited by Number, Character and Boolean classes
+            Object class is inherited by Number, Character and Boolean classes
             All the primitive datatypes are inherited from Number class.
 
 
@@ -83,44 +83,42 @@ public class WrapperClassDemo {
 
         /* Why does the concept of WrapperClasses exist?/
 
-        Wrapper classes in Java exist to provide a way to use primitive data types (like int, char, double, etc.) as objects. This is necessary because Java is an object-oriented language, and many of its features (like collections, generics, and certain API methods) require objects rather than primitive types. Here are some key reasons why wrapper classes are important:
+        Wrapper classes in Java exist to provide a way to use primitive data types (like int, char, double, etc.) as objects.
+        This is necessary because Java is an object-oriented language, and many of its features (like collections, generics, and certain API methods) require objects rather than primitive types.
+        Here are some key reasons why wrapper classes are important:
 
-                ***Collections Framework: The Java Collections Framework, including classes like ArrayList, HashMap, etc., works with objects. Wrapper classes allow you to store primitive values in these collections.
+                ***Collections Framework: The Java Collections Framework, including classes like ArrayList, HashMap, etc., works with objects.
+                Wrapper classes allow you to store primitive values in these collections.
 
-                java
-                Copy code
                 ArrayList<Integer> list = new ArrayList<>();
                 list.add(10);  // Autoboxing converts int to Integer
 
-                ***Autoboxing and Unboxing: Java provides autoboxing (automatic conversion of primitives to their corresponding wrapper objects) and unboxing (automatic conversion of wrapper objects to their corresponding primitive types). This simplifies the code and makes it easier to work with collections and other APIs.
+                ***Autoboxing and Unboxing: Java provides autoboxing (automatic conversion of primitives to their corresponding wrapper objects)
+                and unboxing (automatic conversion of wrapper objects to their corresponding primitive types).
+                This simplifies the code and makes it easier to work with collections and other APIs.
 
-                java
-                Copy code
                 Integer i = 5;  // Autoboxing
                 int j = i;      // Unboxing
 
-                ***Null Values: Primitive data types cannot be null, whereas wrapper classes can. This is useful in cases where a null value is needed to indicate the absence of a value, such as in data structures or database results.
+                ***Null Values: Primitive data types cannot be null, whereas wrapper classes can.
+                This is useful in cases where a null value is needed to indicate the absence of a value, such as in data structures or database results.
 
-                java
-                Copy code
                 Integer i = null;  // Valid
                 int j = null;      // Compilation error
 
                 ***Utility Methods: Wrapper classes provide several utility methods for converting between different types and for parsing strings to primitive values.
 
-                java
-                Copy code
                 int i = Integer.parseInt("123");
                 String s = Integer.toString(123);
 
-                ***Type Safety with Generics: Generics in Java only work with objects. Wrapper classes enable you to use primitive values with generics, ensuring type safety at compile time.
+                ***Type Safety with Generics: Generics in Java only work with objects.
+                Wrapper classes enable you to use primitive values with generics, ensuring type safety at compile time.
 
-                java
-                Copy code
                 List<Double> list = new ArrayList<>();
                 list.add(3.14);  // Autoboxing
 
-                ***Immutability: Wrapper classes are immutable, which means that once an object is created, its value cannot be changed. This can be useful for maintaining the integrity of data and for use in concurrent programming.
+                ***Immutability: Wrapper classes are immutable, which means that once an object is created, its value cannot be changed.
+                This can be useful for maintaining the integrity of data and for use in concurrent programming.
 
                 Wrapper classes in Java include Integer, Double, Float, Long, Short, Byte, Character, and Boolean, each corresponding to a primitive data type. They help bridge the gap between Java's object-oriented nature and the need to work with primitive data types.
 
