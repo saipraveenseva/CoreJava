@@ -48,9 +48,9 @@ public class ThisVsSuper {
 
     public static void main(String[] args) {
         Rectangle r1= new Rectangle(10,5);
-        r1.display();
+        r1.display();    // length: 10 breadth:5
 
         Cuboid c1 = new Cuboid(20,10,5);
-        c1.display();
+        c1.display();    // super.x=20 this.x=10
     }
 }
